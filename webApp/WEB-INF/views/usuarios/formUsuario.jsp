@@ -2,6 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +20,7 @@
       
 		
 		<spring:url value="/usuarios/save" var="urlSave"></spring:url>
+		<spring:url value="/usuarios/deleteRole/" var="urlDeleteRole"></spring:url>
 		
 	
 		
@@ -62,10 +64,12 @@
 							<label for="cuenta">Cuenta</label>    
 							<c:if test="${usuario.id >0}"> 
 							<form:input type="text" class="form-control" path="cuenta" id="cuenta" required="required" disabled="true"/>
+							<form:hidden path="cuenta"/>
 							</c:if>  
 							<c:if test="${usuario.id==0}">      
 							<form:input type="text" class="form-control" path="cuenta" id="cuenta" required="required"/>
 							</c:if>
+							
 						</div>  
 					</div>
 					
@@ -107,25 +111,30 @@
 					<div class="col-sm-3">
 					<div class="form-group">
 							<label for="perfil" class="control-label">Perfil</label>              
-							<select  id="perfil" name="perfil" class="form-control" multiple="multiple">
+							<select  id="perfil" name="perfil" class="form-control"  multiple="multiple">
 							<c:forEach items="${roles}" var="role">
 								<option value="${role.id}">${role.role }&nbsp;</option><!-- se agreggo &nbsp; para diferenciarlo del nombre -->
 								</c:forEach>							
 							</select>             
-						</div> 
 						</div>
+						<c:if test="${fn:length(roles) gt 0}"> <!--esta es la clave para poder dejar el select de abaja selected -->
+						<a href="${urlDeleteRole}${usuario.id}" onclick='return confirm("¿esta seguro que desea eliminar los roles?")' class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="badge badge-danger">Eliminar Roles</span></a>
+						</c:if>
+						<hr class="featurette-divider">
+						</div>
+						 
 						      
 					<div class="col-sm-3">
 						<div class="form-group">
 							<label for="perfil" class="control-label">Lista de Perfiles Disponibles</label>              
-							<select  id="perfil" name="perfil" class="form-control" multiple="multiple" required="required">
+							<select  id="perfil2" name="perfil" class="form-control" multiple="multiple" required="required">
 							<c:forEach items="${listRoles}" var="role">
 								<option value="${role.id}">${role.role }&nbsp;</option><!-- se agreggo &nbsp; para diferenciarlo del nombre -->
 								</c:forEach>							
 							</select>             
-						</div> 
+						</div>
 					</div>
-				
+					
 				</div>	
 				
 

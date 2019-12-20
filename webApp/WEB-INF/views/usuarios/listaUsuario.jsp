@@ -70,7 +70,7 @@
                 </c:choose>
                 <td>
                     <a href="${urlEdit}/${usuario.id}" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="badge badge-success">Editar</span></a>
-                    <a href="${urlDelete}/${usuario.id}"onclick='return confirm("esta seguro?")' class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="badge badge-danger">Eliminar</span></a>
+                    <a href="${urlDelete}/${usuario.id}"onclick='return confirm("¿esta seguro de eliminar el usuario?")' class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="badge badge-danger">Eliminar</span></a>
                 </td>
             </tr>
             </c:forEach>
