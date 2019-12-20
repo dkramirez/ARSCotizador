@@ -36,7 +36,7 @@
 			
 			<!-- para evitar el error 403 cuando activo la seguridad en spring hay que agregar esta linea  -->
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-					<form:hidden path="id"/>
+					<form:hidden path="idRole"/>
 					
 					<div class="col-sm-3">
 						<div class="form-group">

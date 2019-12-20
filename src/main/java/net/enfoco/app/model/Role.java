@@ -18,32 +18,7 @@ public class Role {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idRole;
 	private String role;
-	
-	//@Transient
-	/*@ManyToOne(fetch = FetchType.LAZY) //relacion con usuario. un usuario tiene varios roles 
-	@JoinColumn(name = "id")
-	private Usuario usuario;*/
-	
-	//@OneToMany(mappedBy = "role", cascade = CascadeType.REMOVE)
-	//@JoinColum
-	//@OneToMany(targetEntity = RoleUsuario.class, cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-	//private List<RoleUsuario> roleUsuario =  new ArrayList<RoleUsuario>();
-	
-	
-	
-	public int getId() {
-		return idRole;
-	}
-	public void setId(int id) {
-		this.idRole = id;
-	}
-	public String getRole() {
-		return role;
-	}
-	public void setRole(String role) {
-		this.role = role;
-	}
-	
+	private String detalles;
 	
 	public int getIdRole() {
 		return idRole;
@@ -51,16 +26,22 @@ public class Role {
 	public void setIdRole(int idRole) {
 		this.idRole = idRole;
 	}
-/*	public List<RoleUsuario> getRoleUsuario() {
-		return roleUsuario;
+	public String getRole() {
+		return role;
 	}
-	public void setRoleUsuario(List<RoleUsuario> roleUsuario) {
-		this.roleUsuario = roleUsuario;
-	}*/
+	public void setRole(String role) {
+		this.role = role;
+	}
+	public String getDetalles() {
+		return detalles;
+	}
+	public void setDetalles(String detalles) {
+		this.detalles = detalles;
+	}
 	@Override
 	public String toString() {
-		return "Role [idRole=" + idRole + ", role=" + role + "]";
-	}
+		return "Role [idRole=" + idRole + ", role=" + role + ", detalles=" + detalles + "]";
+	}	
 	
 	
 }

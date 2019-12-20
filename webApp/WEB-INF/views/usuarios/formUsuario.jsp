@@ -13,10 +13,7 @@
 		<meta name="author" content="">
 		<title>Creacion de Usuarios</title>
 		 
-        <c:if test="${errorCuenta!=null }">
-       <div class="alert alert-danger" role="alert">${ errorCuenta}</div>
-      
-      </c:if>
+        
       
 		
 		<spring:url value="/usuarios/save" var="urlSave"></spring:url>
@@ -29,6 +26,13 @@
 	</head>
 
 	<body>
+	 <jsp:include page="../includes/menu.jsp"></jsp:include>
+  		<br><br>
+  		
+  		<c:if test="${errorCuenta!=null }">
+       <div class="alert alert-danger" role="alert">${ errorCuenta}</div>
+      
+      </c:if>
 
 		<div class="container theme-showcase" role="main"  >
 		 
@@ -113,7 +117,7 @@
 							<label for="perfil" class="control-label">Perfil</label>              
 							<select  id="perfil" name="perfil" class="form-control"  multiple="multiple">
 							<c:forEach items="${roles}" var="role">
-								<option value="${role.id}">${role.role }&nbsp;</option><!-- se agreggo &nbsp; para diferenciarlo del nombre -->
+								<option value="${role.idRole}">${role.role }&nbsp;</option><!-- se agreggo &nbsp; para diferenciarlo del nombre -->
 								</c:forEach>							
 							</select>             
 						</div>
@@ -129,7 +133,7 @@
 							<label for="perfil" class="control-label">Lista de Perfiles Disponibles</label>              
 							<select  id="perfil2" name="perfil" class="form-control" multiple="multiple" required="required">
 							<c:forEach items="${listRoles}" var="role">
-								<option value="${role.id}">${role.role }&nbsp;</option><!-- se agreggo &nbsp; para diferenciarlo del nombre -->
+								<option value="${role.idRole}">${role.role }&nbsp;</option><!-- se agreggo &nbsp; para diferenciarlo del nombre -->
 								</c:forEach>							
 							</select>             
 						</div>

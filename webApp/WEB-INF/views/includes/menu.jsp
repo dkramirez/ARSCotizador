@@ -21,7 +21,8 @@
 		
 		<sec:authorize access="hasAnyAuthority('Cliente')">
 	
-		<nav class="nav nav-pills nav-fill fixed-top">
+		<!-- <nav class="nav nav-pills nav-fill fixed-top"> -->
+		<nav class="navbar navbar-dark bg-dark fixed-top " >
 		  <a class="nav-item nav-link" href="${urlRoot}">ARS Cotizador|Cliente</a>
 		  <a class="nav-item nav-link" href="${urlRoot}admin/logout">Logout</a>
 		</nav>
@@ -29,7 +30,7 @@
 		
 		<sec:authorize access="isAnonymous()">
 	
-		<nav class="nav nav-pills nav-fill fixed-top">
+		<nav class="navbar navbar-dark bg-dark fixed-top " >
 		  <a class="nav-item nav-link" href="${urlRoot}">ARS Cotizador</a>
 		  <a class="nav-item nav-link" href="#">Contactos</a>
 		</nav>

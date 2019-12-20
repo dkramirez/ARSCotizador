@@ -23,16 +23,19 @@
     <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
     
   </head>
+  
 
   <body>
+   <jsp:include page="../includes/menu.jsp"></jsp:include>
+  <br><br>
 
     <div class="container theme-showcase" role="main">
 
       <h3>Listado de imagenes del Banner</h3>
       
       <c:if test="${mensaje!=null }">
+      <br><br>
        <div class="alert alert-success" role="alert">${ mensaje}</div>
-      
       </c:if>
       
       <a href="${urlCreate}" class="btn btn-primary" role="button" title="Nuevo Usuario" >Nuevo</a><br><br>

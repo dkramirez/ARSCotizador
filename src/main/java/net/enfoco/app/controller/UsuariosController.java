@@ -100,7 +100,7 @@ public class UsuariosController {
 						
 						List <Integer> tempComp = serviciosRoleUsuarios.buscarListaDeIdRoles(usuario.getId());
 						
-						if( tempComp.contains(usRole.getRole().getId())) {
+						if( tempComp.contains(usRole.getRole().getIdRole())) {
 							
 							System.out.println("Ya tiene ese role");
 						}
