@@ -193,10 +193,16 @@ public class UsuariosController {
 		
 		Page<Usuario> listUsuarios = serviciosUsuario.mostrarUsuarios(page);
 		model.addAttribute("usuarios", listUsuarios);
+		int numeroPaginas = listUsuarios.getTotalPages();
+		numeroPaginas = numeroPaginas -1;
+		
+		model.addAttribute("numeroPaginas", numeroPaginas);
 		
 		List<Usuario> listUsuario = serviciosUsuario.mostrarUsuarios();
 		int conteoUsuarios = listUsuario.size();
 		model.addAttribute("conteoUsuarios", conteoUsuarios);
+		
+		System.out.println("Paginacion  " + numeroPaginas);
 		
 		return "usuarios/listaUsuario";
 		

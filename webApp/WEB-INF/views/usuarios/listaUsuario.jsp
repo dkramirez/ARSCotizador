@@ -28,6 +28,9 @@
   <body>
    <jsp:include page="../includes/menu.jsp"></jsp:include>
   <br><br>
+  
+ 
+
 
     <div class="container theme-showcase" role="main">
 
@@ -39,6 +42,9 @@
       </c:if>
       
       <a href="${urlCreate}" class="btn btn-primary" role="button" title="Nuevo Usuario" >Nuevo</a><br><br>
+       ${param.page}
+       ${numeroPaginas}
+  
 
       <div class="table-responsive">
         <table class="table table-hover table-striped table-bordered">
@@ -87,9 +93,19 @@
 			    <li class="page-item">
 			      <a class="page-link" href="${urlUsuarios}/indexPaginate?page=${usuarios.number - 1 }">Anterior</a>
 			    </li>
-			   <li class="page-item">
+			    <c:if test="${param.page eq numeroPaginas}"> 
+			   <li class="page-item disabled ">
 		      <a class="page-link" href="${urlUsuarios}/indexPaginate?page=${usuarios.number + 1 }">Siguiente</a>
 		    </li>
+		    </c:if>
+		    
+		    <c:if test="${param.page != numeroPaginas}"> 
+			   <li class="page-item disibled ">
+		      <a class="page-link" href="${urlUsuarios}/indexPaginate?page=${usuarios.number + 1 }">Siguiente</a>
+		    </li>
+		    </c:if>
+		    
+		   
 		  </ul>
 			</nav>
 	 </c:if> 
