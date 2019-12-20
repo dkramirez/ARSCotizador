@@ -187,6 +187,7 @@ public class UsuariosController {
 			
 		}
 	
+	//comentario de prueba pra git
 	@GetMapping("/indexPaginate")
 	public String mostrarUsuariosPaginado(Model model, Pageable page) {
 		
