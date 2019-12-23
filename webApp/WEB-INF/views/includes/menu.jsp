@@ -7,31 +7,54 @@
 	<spring:url value="/" var="urlRoot"></spring:url>
 		<sec:authorize access="hasAnyAuthority('Administrador')">
 	
-		<!-- <nav class="nav nav-pills nav-fill fixed-top"> -->
-		<!-- <nav class="navbar navbar-light fixed-top" style="background-color: #2270b3;"> -->
-		<nav class="navbar navbar-dark bg-dark fixed-top " >
-		  <a class="nav-item nav-link" href="${urlRoot}">ARS Cotizador|Administracion</a>
-		  <a class="nav-item nav-link" href="${urlRoot}usuarios/indexPaginate?page=0">Usuarios</a>
-		  <a class="nav-item nav-link" href="${urlRoot}roles/index">Roles</a>
-		  <a class="nav-item nav-link" href="${urlRoot}admin/logout">Logout</a>
-		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-		  <span class="navbar-toggler-icon"></span>
-		</nav>
+		<center>
+		<nav class="navbar dropdownmenu fixed-top">
+  <ul class="navbar">
+  	<a class="navbar-brand text-white">ARS Cotizador</a>
+    <li><a href="${urlRoot}">Inicio</a></li>
+    <li><a href="${urlRoot}usuarios/indexPaginate?page=0">Usuarios</a></li>
+    <li><a href="${urlRoot}roles/index">Roles</a></li>
+    <li><a href="#">Cuenta</a>
+      <ul id="submenu">
+        <li><a href="">Usuario: <sec:authentication property="principal.username"/> </a></li>
+        <li><a href="">Perfil: Administrador</a></li>
+        <li><a href="${urlRoot}admin/logout">Cerrar Sesión</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></center>
 		</sec:authorize>
 		
-		<sec:authorize access="hasAnyAuthority('Cliente')">
+			<sec:authorize access="hasAnyAuthority('Cliente')">
 	
-		<!-- <nav class="nav nav-pills nav-fill fixed-top"> -->
-		<nav class="navbar navbar-dark bg-dark fixed-top " >
-		  <a class="nav-item nav-link" href="${urlRoot}">ARS Cotizador|Cliente</a>
-		  <a class="nav-item nav-link" href="${urlRoot}admin/logout">Logout</a>
-		</nav>
+		<center>
+		<nav class="navbar dropdownmenu fixed-top">
+  <ul class="navbar">
+  	<a class="navbar-brand text-white">ARS Cotizador</a>
+    <li><a href="${urlRoot}">Inicio</a></li>
+    <li><a href="#">Cuenta</a>
+      <ul id="submenu">
+        <li><a href="">Usuario: <sec:authentication property="principal.username"/> </a></li>
+        <li><a href="">Perfil: Cliente </a></li>
+        <li><a href="${urlRoot}admin/logout">Cerrar Sesión</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></center>
 		</sec:authorize>
 		
-		<sec:authorize access="isAnonymous()">
+				<sec:authorize access="isAnonymous()">
 	
-		<nav class="navbar navbar-dark bg-dark fixed-top " >
-		  <a class="nav-item nav-link" href="${urlRoot}">ARS Cotizador</a>
-		  <a class="nav-item nav-link" href="#">Contactos</a>
-		</nav>
+		<center>
+		<nav class="navbar dropdownmenu fixed-top">
+  <ul class="navbar">
+  	<a class="navbar-brand text-white">ARS Cotizador</a>
+    <li><a href="${urlRoot}">Inicio</a></li>
+    <li><a href="#">Contactos</a></li>
+    <li><a href="${urlRoot}admin/welcome">Iniciar Sesión</a></li>
+    </li>
+  </ul>
+</nav></center>
 		</sec:authorize>
+		
+		

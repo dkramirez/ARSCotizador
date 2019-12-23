@@ -12,13 +12,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Listado de Usuarios</title>
-    
+   
     <spring:url value="/usuarios/create" var="urlCreate"></spring:url>
     <spring:url value="/usuarios/edit" var="urlEdit"></spring:url>
     <spring:url value="/usuarios/delete" var="urlDelete"></spring:url>
     <spring:url value="/usuarios" var="urlUsuarios"></spring:url>
       
-    
+    <link href= "../resources/CSS/estilos.css" rel="stylesheet"/>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
     
@@ -90,6 +90,7 @@
        <c:if test="${conteoUsuarios >10}">
 				<nav aria-label="Page navigation example">
 			  <ul class="pagination justify-content-center">
+			  
 			    <li class="page-item">
 			      <a class="page-link" href="${urlUsuarios}/indexPaginate?page=${usuarios.number - 1 }">Anterior</a>
 			    </li>
