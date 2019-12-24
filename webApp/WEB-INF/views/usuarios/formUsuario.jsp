@@ -28,6 +28,7 @@
 
 	<body>
 	 <jsp:include page="../includes/menu.jsp"></jsp:include>
+	   
   		<br><br>
   		
   		<c:if test="${errorCuenta!=null }">

@@ -1,6 +1,10 @@
 package net.enfoco.app.repository;
 
 
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -30,5 +34,10 @@ public interface IUsuariosRepository extends JpaRepository<Usuario, Integer> {
 	
 	@Query(nativeQuery = true, value = "select cuenta from usuarios where cuenta =:cuenta")
 	public String buscarPorCuenta(@Param ("cuenta") String cuenta);
+	
+	
+	//Query pageable para hacer la busqueda por id, cuenta o nombre
+	@Query(nativeQuery  = true, value = "select * from usuarios where nombre=:texto or cuenta=:texto or id=:texto or estatus=:texto ORDER BY ?#{#pageable}")
+	public Page<Usuario> bucador(@Param("texto") String texto, Pageable page);
 
 }

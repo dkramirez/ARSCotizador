@@ -17,6 +17,6 @@
 <body>
   <jsp:include page="includes/menu.jsp"></jsp:include>
   <br><br>
-<h1>soy el index</h1>
+<h1>soy la pagina de inicio</h1>
 </body>
 </html>

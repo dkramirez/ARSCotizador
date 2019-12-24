@@ -38,7 +38,9 @@ public class Usuario {
 	//@OneToMany(mappedBy = "usuarios", cascade = CascadeType.REMOVE)
 	//@JoinColumn(name = "id")
 	//@OneToMany(targetEntity = RoleUsuario.class, cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-	@OneToMany(mappedBy = "usuarios")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarios", fetch = FetchType.EAGER)
+	//@OneToMany(mappedBy = "usuarios") este era el que esta funcionando 
+	
 	private List<RoleUsuario> listRollUsuario =  new ArrayList<RoleUsuario>();
 	
 	public List<RoleUsuario> getListRollUsuario() {
@@ -102,8 +104,9 @@ public class Usuario {
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", cuenta=" + cuenta + ", pwd="
-				+ pwd + ", estatus=" + estatus + ", email=" + email + ", telefono=" + telefono + ", listRollUsuario="
-				+ listRollUsuario + "]";
+				+ pwd + ", estatus=" + estatus + ", email=" + email + ", telefono=" + telefono + "]";
 	}
+
+
 	
 }

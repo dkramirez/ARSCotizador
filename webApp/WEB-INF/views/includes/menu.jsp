@@ -16,8 +16,8 @@
     <li><a href="${urlRoot}roles/index">Roles</a></li>
     <li><a href="#">Cuenta</a>
       <ul id="submenu">
-        <li><a href="">Usuario: <sec:authentication property="principal.username"/> </a></li>
-        <li><a href="">Perfil: Administrador</a></li>
+        <li><a>Usuario: <sec:authentication property="principal.username"/> </a></li>
+        <li><a>Perfil: Administrador</a></li>
         <li><a href="${urlRoot}admin/logout">Cerrar Sesión</a></li>
       </ul>
     </li>
@@ -34,8 +34,8 @@
     <li><a href="${urlRoot}">Inicio</a></li>
     <li><a href="#">Cuenta</a>
       <ul id="submenu">
-        <li><a href="">Usuario: <sec:authentication property="principal.username"/> </a></li>
-        <li><a href="">Perfil: Cliente </a></li>
+        <li><a>Usuario: <sec:authentication property="principal.username"/> </a></li>
+        <li><a>Perfil: Cliente </a></li>
         <li><a href="${urlRoot}admin/logout">Cerrar Sesión</a></li>
       </ul>
     </li>

@@ -17,6 +17,7 @@
     <spring:url value="/usuarios/edit" var="urlEdit"></spring:url>
     <spring:url value="/usuarios/delete" var="urlDelete"></spring:url>
     <spring:url value="/usuarios" var="urlUsuarios"></spring:url>
+    <spring:url value="/usuarios/buscar" var="urlBuscar"></spring:url>
       
     <link href= "../resources/CSS/estilos.css" rel="stylesheet"/>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
@@ -34,16 +35,24 @@
 
     <div class="container theme-showcase" role="main">
 
-      <h3>Listado de imagenes del Banner</h3>
+      <h3>Listado de Usuarios</h3>
       
       <c:if test="${mensaje!=null }">
       <br><br>
        <div class="alert alert-success" role="alert">${ mensaje}</div>
       </c:if>
       
+      <div class="navbar">
       <a href="${urlCreate}" class="btn btn-primary" role="button" title="Nuevo Usuario" >Nuevo</a><br><br>
-       ${param.page}
-       ${numeroPaginas}
+      
+      <form class="form-inline" action="${urlBuscar} " method="get">
+      
+      <input type="search" name="txtBuscar" class="form-control">
+      <input type="submit" value="buscar" class="btn btn-outline-success" >
+      
+      </form>
+       </div>
+      
   
 
       <div class="table-responsive">

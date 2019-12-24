@@ -75,6 +75,26 @@ public class UsuariosServices implements IUsuarioService{
 		return repoUsuario.findAll(page);
 	}
 
+	
+	/* Metodo que me va a permitir busca por
+	 * nombre de usuario, cuenta
+	 * y por el id del usuario. 
+	 * */
+/*	@Override
+	public List<Usuario> buscar(String text) {
+		List<Usuario> listBuscador = repoUsuario.bucador(text);
+		
+		return listBuscador;
+	}*/
+
+	@Override
+	public Page<Usuario> buscar(String texto, Pageable page) {
+	//return	repoUsuario.bucador(page);
+	
+	return repoUsuario.bucador(texto, page);
+		
+	}
+
 
 
 }

@@ -15,8 +15,10 @@
     <spring:url value="/roles/crear" var="urlCrear"></spring:url>
     <spring:url value="/roles/delete" var="urlDelete"></spring:url>
     <spring:url value="/roles/edit" var="urlEdit"></spring:url>
+    <spring:url value="/" var="urlPublic"></spring:url>
   
-  	<link href= "../resources/CSS/estilos.css" rel="stylesheet"/>
+  
+  	<link href= "${urlPublic}resources/CSS/estilos.css" rel="stylesheet"/>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
     

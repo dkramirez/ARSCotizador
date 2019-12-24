@@ -17,5 +17,7 @@ public interface IUsuarioService {
 	Usuario buscarPorId (int idUsuario);
 	void upDate(int idUsuario); // Haciendo una prueba.
 	String buscarPorCuenta (String cuenta);// Haciendo una prueba.
+	//public List<Usuario> buscar(String text);
+	Page<Usuario> buscar(String texto, Pageable page);
 
 }

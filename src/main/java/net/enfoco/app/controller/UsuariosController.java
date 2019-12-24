@@ -207,4 +207,18 @@ public class UsuariosController {
 		return "usuarios/listaUsuario";
 		
 		}
+	
+	@GetMapping("/buscar")
+	// tengo que hacerlo pageable
+	public String buscador( @RequestParam("txtBuscar") String txtBuscar, Model model, Pageable page) {
+		
+		Page<Usuario> listBuscador = serviciosUsuario.buscar(txtBuscar, page);
+		model.addAttribute("usuarios", listBuscador);
+		
+		System.out.println("la variable que viene de la vista "+ txtBuscar);
+		System.out.println("el listado de la busqueda "+ listBuscador);
+		
+		return "usuarios/listaUsuario";
+	}
+	
 	}

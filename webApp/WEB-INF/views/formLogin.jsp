@@ -18,6 +18,7 @@
     <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
   </head>
   <body>
+  ${usuarios}
      <div class="container">
       <form class="form-signin" method="post" action="${urlRoot}login">
       
