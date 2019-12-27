@@ -60,6 +60,7 @@ public class RoleController {
 	@GetMapping("/delete/{id}")
 	public String eliminarPerfil(@PathVariable("id") int id, RedirectAttributes attributes) {
 		
+		serviceRole.eliminarPorRoleId(id);
 		serviceRole.eliminarRole(id);
 		attributes.addFlashAttribute("mensaje", "El perfil fue eliminado correctamente");
 		

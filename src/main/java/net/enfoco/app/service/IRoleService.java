@@ -12,4 +12,5 @@ public interface IRoleService {
 	List<Role> buscarPorIdCuenta(int idUsuario);
 	void guardarRole(Role role);
 	void eliminarRole(int id);
+	void eliminarPorRoleId(int idRole);
 }

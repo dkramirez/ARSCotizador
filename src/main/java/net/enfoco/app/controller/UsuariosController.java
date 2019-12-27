@@ -242,4 +242,11 @@ public class UsuariosController {
 		return "usuarios/listaUsuario";
 	}
 	
+	
+	//para mostrar los usuarios que estan activos.
+	public String usuariosActivos () {
+		
+		return "usuarios/listaUsuario";
+	}
+	
 	}

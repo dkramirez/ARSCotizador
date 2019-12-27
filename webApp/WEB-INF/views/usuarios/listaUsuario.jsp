@@ -47,8 +47,10 @@
       
       <form class="form-inline" action="${urlBuscar} " method="get">
       
+      <!-- <a><input type="checkbox" value="activos" name="activos" class="form-control">Usuario activos</a> -->
       <input type="search" name="txtBuscar" class="form-control">
       <input type="submit" value="buscar" class="btn btn-outline-success" >
+      
       <!-- <a></a><input type="checkbox">Usuarios activos</a> -->
       
       </form>
@@ -71,7 +73,7 @@
             </tr>
             <c:forEach items="${usuarios.content}" var="usuario">
             <tr>
-                <td>${usuario.id}</td>
+                <td >${usuario.id}</td>
                 <td>${usuario.nombre }</td>
                 <td>${usuario.apellido}</td>    
                 <td>${usuario.cuenta }</td>  

@@ -54,6 +54,13 @@ public class RolesService implements IRoleService {
 		
 	}
 
+
+	@Override
+	public void eliminarPorRoleId(int idRole) {
+		repoService.eliminarPorRoleId(idRole);
+		
+	}
+
 	
 
 }
