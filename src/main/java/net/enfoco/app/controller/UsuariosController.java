@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,7 @@ import net.enfoco.app.model.Usuario;
 import net.enfoco.app.service.RolesService;
 import net.enfoco.app.service.RolesUsuarioService;
 import net.enfoco.app.service.UsuariosServices;
+import net.enfoco.app.controller.LoginController;
 
 @Controller
 @RequestMapping("/usuarios")
@@ -42,8 +44,13 @@ public class UsuariosController {
 	private BCryptPasswordEncoder encriptar;
 	
 	@GetMapping("/create")
-	public String mostrarFormulario (@ModelAttribute Usuario usuario, Model model) {
-		
+	public String mostrarFormulario (@ModelAttribute Usuario usuario, Model model, Authentication autentication) {
+		 
+		/*Para rendirizar en la vista el o los roles que tiene el usuario 
+		 */
+			LoginController l = new LoginController();
+			l.listaRoles(autentication, model);
+			
 			List<Role> listRoles = serviciosRoles.mostrarRole();
 			model.addAttribute("listRoles", listRoles);
 			return "usuarios/formUsuario";
@@ -137,7 +144,12 @@ public class UsuariosController {
 	
 	
 		@GetMapping("/index")
-		public String mostrarUsuarios(Model model) {
+		public String mostrarUsuarios(Model model, Authentication autentication) {
+			
+			/*Para rendirizar en la vista el o los roles que tiene el usuario 
+			 */
+			LoginController l = new LoginController();
+			l.listaRoles(autentication, model);
 			
 			List<Usuario> listUsuarios = serviciosUsuario.mostrarUsuarios();
 			model.addAttribute("usuarios", listUsuarios);
@@ -189,7 +201,12 @@ public class UsuariosController {
 	
 	//comentario de prueba pra git
 	@GetMapping("/indexPaginate")
-	public String mostrarUsuariosPaginado(Model model, Pageable page) {
+	public String mostrarUsuariosPaginado(Model model, Pageable page, Authentication autentication) {
+		
+		/*Para rendirizar en la vista el o los roles que tiene el usuario 
+		 */
+		LoginController l = new LoginController();
+		l.listaRoles(autentication, model);
 		
 		Page<Usuario> listUsuarios = serviciosUsuario.mostrarUsuarios(page);
 		model.addAttribute("usuarios", listUsuarios);
@@ -208,15 +225,19 @@ public class UsuariosController {
 		
 		}
 	
+	/*Meoto que permite hacer una busqueda por nombre, id o cuenta
+	 * Recibe un parametro de tipo String
+	 * */
+	
 	@GetMapping("/buscar")
 	// tengo que hacerlo pageable
-	public String buscador( @RequestParam("txtBuscar") String txtBuscar, Model model, Pageable page) {
+	public String buscador( @RequestParam("txtBuscar") String txtBuscar, Model model, Pageable page, Authentication autentication) {
+		
+		LoginController l = new LoginController();
+		l.listaRoles(autentication, model);
 		
 		Page<Usuario> listBuscador = serviciosUsuario.buscar(txtBuscar, page);
 		model.addAttribute("usuarios", listBuscador);
-		
-		System.out.println("la variable que viene de la vista "+ txtBuscar);
-		System.out.println("el listado de la busqueda "+ listBuscador);
 		
 		return "usuarios/listaUsuario";
 	}

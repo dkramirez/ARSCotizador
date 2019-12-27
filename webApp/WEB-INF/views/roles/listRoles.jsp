@@ -45,13 +45,15 @@
             <tr>
                 <th>ID</th>
                 <th>Perfil</th>
+                <th>Detalles</th>
                 <th>Opciones</th>
 
             </tr>
             <c:forEach items="${roles}" var="role">
             <tr>
                 <td>${role.idRole }</td>
-                <td>${role.role}</td>            
+                <td>${role.role}</td> 
+                <td>${role.detalles}</td>           
                 <td>
 					<a href="${urlEdit}/${role.idRole}" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="badge badge-success">Editar</span></a>
                     <a href="${urlDelete}/${role.idRole}" onclick='return confirm("Esta seguro ?")' class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="badge badge-danger">Eliminar</span></a>

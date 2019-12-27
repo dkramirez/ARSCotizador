@@ -24,6 +24,9 @@
 	<link href= "${urlPublic}resources/CSS/estilos.css" rel="stylesheet"/>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
+    
+    <!-- Haciendo pruebas con JS -->
+    
 	</head>
 
 	<body>
@@ -90,7 +93,7 @@
 					<div class="col-sm-3">
 						<div class="form-group">
 							<label for="email">Email</label>
-							<form:input type="text" class="form-control" path="email" id="email" placeholder="Correo electrónico" required="required"/>
+							<form:input type="email" class="form-control" path="email" id="email" placeholder="Correo electrónico" required="required"/>
 						</div>  
 					</div>
 					<div class="col-sm-3">
@@ -163,5 +166,6 @@
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
 		<script src="bootstrap/js/bootstrap.min.js"></script>    
+		<script src="../resources/js/funciones.js"></script> 
 	</body>
 </html>

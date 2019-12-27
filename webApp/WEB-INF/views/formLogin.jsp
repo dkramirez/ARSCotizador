@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <title>Soy el login personalizado</title>
     
-    <spring:url value="/" var="urlRoot"></spring:url>
+    <spring:url value="/login" var="urlRoot"></spring:url>
     
     
     
@@ -18,9 +18,9 @@
     <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
   </head>
   <body>
-  ${usuarios}
+  
      <div class="container">
-      <form class="form-signin" method="post" action="${urlRoot}login">
+      <form class="form-control text-center container" style="width: 30%; height: 40%;" method="post" action="${urlRoot}">
       
       <c:if test="${param.error !=null}"> <!-- lo que estoy diciendo aqui es si existe en la url un parametro llamado error -->
 				<img src="${urlPublic}/images/error.png" width="48" height="48" class="center">
@@ -35,9 +35,21 @@
           <label for="password" class="sr-only">Password</label>
           <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
         </p>
+         
+      <!--
+        <p>
+          <label for="perfil" class="sr-only">Perfil</label>
+          <select  id="perfil" name="perfil" class="selectpicker form-control">
+          <c:forEach items="${listaRoles}" var="role">
+          	<option value="${role.idRole}">${role.role }&nbsp;</option>
+          	</c:forEach>
+          </select>
+        </p>-->
+         
 
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       </form>
+      
 </div>
 </body></html>

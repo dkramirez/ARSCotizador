@@ -49,6 +49,7 @@
       
       <input type="search" name="txtBuscar" class="form-control">
       <input type="submit" value="buscar" class="btn btn-outline-success" >
+      <!-- <a></a><input type="checkbox">Usuarios activos</a> -->
       
       </form>
        </div>

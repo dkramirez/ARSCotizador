@@ -3,6 +3,7 @@ package net.enfoco.app.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +24,10 @@ public class RoleController {
 	private RolesService serviceRole;
 	
 	@GetMapping("/index")
-	public String AgregarRoles(Model model) {
+	public String AgregarRoles(Model model, Authentication autentication) {
+		
+		LoginController lc = new LoginController();
+		lc.listaRoles(autentication, model);
 		
 		List<Role> listRole = serviceRole.mostrarRole();
 		model.addAttribute("roles", listRole);
@@ -34,7 +38,10 @@ public class RoleController {
 	
 	
 	@GetMapping("/crear")
-	public String crearPerfil(@ModelAttribute Role role) {
+	public String crearPerfil(@ModelAttribute Role role, Authentication autentication, Model model) {
+		
+		LoginController lc = new LoginController();
+		lc.listaRoles(autentication, model);
 		
 		
 		return "roles/formRole";
@@ -60,12 +67,14 @@ public class RoleController {
 	}
 	
 	@GetMapping("/edit/{id}")
-	public String editarRole(@PathVariable("id") int idRole, Model model) {
+	public String editarRole(@PathVariable("id") int idRole, Model model, Authentication autentication) {
+		
+		LoginController lc = new LoginController();
+		lc.listaRoles(autentication, model);
+		
 		
 		Role role = serviceRole.buscarPorId(idRole);
-		
 		model.addAttribute("role", role);
-		
 		System.out.println("los datos del role " + role);
 		
 		return"roles/formRole";

@@ -37,7 +37,7 @@ public interface IUsuariosRepository extends JpaRepository<Usuario, Integer> {
 	
 	
 	//Query pageable para hacer la busqueda por id, cuenta o nombre
-	@Query(nativeQuery  = true, value = "select * from usuarios where nombre=:texto or cuenta=:texto or id=:texto or estatus=:texto ORDER BY ?#{#pageable}")
+	@Query(nativeQuery  = true, value = "select * from usuarios where nombre=:texto or cuenta=:texto or id=:texto ORDER BY ?#{#pageable}")
 	public Page<Usuario> bucador(@Param("texto") String texto, Pageable page);
 
 }

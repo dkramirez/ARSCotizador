@@ -12,7 +12,7 @@
 	<!-- Declaramos todos los recursos que estaran protegidos -->
 	<!-- el patron /peliculas/*, indica que todas url que tenga el prefijo peliculas -->
 	<!-- se le puede dar mas de un acceso separado por ","  -->
-	<intercept-url pattern="/admin/*" access="hasAnyAuthority('Administrador', 'Cliente')" />
+	<intercept-url pattern="/admin/*" access="hasAnyAuthority('Administrador','Cliente')" />
 	<intercept-url pattern="/usuarios/*" access="hasAnyAuthority('Administrador')" />
 
 	
