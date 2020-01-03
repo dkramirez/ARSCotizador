@@ -215,6 +215,10 @@ public class UsuariosController {
 		
 		model.addAttribute("numeroPaginas", numeroPaginas);
 		
+		/**
+		 * Se manda el conteo de los usuario a la vista para validar
+		 * si es necesario activar el boton siguiente de la paginacion.
+		 */
 		List<Usuario> listUsuario = serviciosUsuario.mostrarUsuarios();
 		int conteoUsuarios = listUsuario.size();
 		model.addAttribute("conteoUsuarios", conteoUsuarios);
@@ -243,7 +247,7 @@ public class UsuariosController {
 	}
 	
 	
-	//para mostrar los usuarios que estan activos.
+	//para mostrar los usuarios que estan activos, aun haciendo pruebas.
 	public String usuariosActivos () {
 		
 		return "usuarios/listaUsuario";
