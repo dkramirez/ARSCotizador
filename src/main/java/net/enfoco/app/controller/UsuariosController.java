@@ -16,8 +16,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import net.enfoco.app.model.Role;
 import net.enfoco.app.model.RoleUsuario;
@@ -233,8 +236,8 @@ public class UsuariosController {
 	 * Recibe un parametro de tipo String
 	 * */
 	
+	/*@ResponseBody
 	@GetMapping("/buscar")
-	// tengo que hacerlo pageable
 	public String buscador( @RequestParam("txtBuscar") String txtBuscar, Model model, Pageable page, Authentication autentication) {
 		
 		LoginController l = new LoginController();
@@ -244,13 +247,54 @@ public class UsuariosController {
 		model.addAttribute("usuarios", listBuscador);
 		
 		return "usuarios/listaUsuario";
+	}*/
+	
+	
+	//TODO se esta utilizando este metodo para hacer prueba con ajax del buscador
+	//@ResponseBody
+	@GetMapping("/buscar")
+	public ModelAndView buscador( @RequestParam("txtBuscar") String txtBuscar, Model model, Pageable page, Authentication autentication) {
+		
+		ModelAndView mv = new ModelAndView("listaUsuario");
+		LoginController l = new LoginController();
+		l.listaRoles(autentication, model);
+		
+		Page<Usuario> listBuscador = serviciosUsuario.buscar(txtBuscar, page);
+		//model.addAttribute("usuarios", listBuscador);
+		mv.addObject("usuario", listBuscador);
+		System.out.println("lo que trae la busqueda " + listBuscador.getNumber());
+		
+		return mv;
 	}
 	
+	
+	//TODO se esta utilizando para hacer pruebas para eliminar un registro usando ajax 
+	// @ResponseBody
+	@GetMapping("/ajaxdelete/{id}")
+	public String deleteConAjx(@PathVariable("id") int empId) {
+		System.out.println("dentro del borrado AJAX");
+		String msg = "Ha ocurrido un error mientra se borraba el usuario " + empId;
+		
+		try {
+			if(empId != 0) {
+				
+				 serviciosRoleUsuarios.eliminarPorIdCuenta(empId); 
+				 serviciosUsuario.eliminarUsuario(empId);
+				 msg="Borrando el usuario con el id: "+ empId;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return msg;
+	}
 	
 	//para mostrar los usuarios que estan activos, aun haciendo pruebas.
 	public String usuariosActivos () {
 		
-		return "usuarios/listaUsuario";
+		return "listaUsuario";
 	}
 	
 	}

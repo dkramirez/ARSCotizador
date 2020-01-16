@@ -18,10 +18,13 @@
     <spring:url value="/usuarios/delete" var="urlDelete"></spring:url>
     <spring:url value="/usuarios" var="urlUsuarios"></spring:url>
     <spring:url value="/usuarios/buscar" var="urlBuscar"></spring:url>
+    <spring:url value="/usuarios/ajaxdelete" var="urlDeleteAjax"></spring:url>
       
     <link href= "../resources/CSS/estilos.css" rel="stylesheet"/>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    
    
     
   </head>
@@ -46,11 +49,12 @@
       <div class="navbar">
       <a href="${urlCreate}" class="btn btn-primary" role="button" title="Nuevo Usuario" >Nuevo</a><br><br>
       
-      <form class="form-inline" action="${urlBuscar} " method="get">
+      <!--<form class="form-inline" action="${urlBuscar} " method="get">-->
+      <form class="form-inline" action="${urlBuscar}"  method="get"  id="idBuscar">
       
       <!-- <a><input type="checkbox" value="activos" name="activos" class="form-control">Usuario activos</a> -->
-      <input type="search" name="txtBuscar" class="form-control">
-      <input type="submit" value="buscar" class="btn btn-outline-success" >
+      <input type="search" name="txtBuscar" class="form-control" id="txtBuscar">
+      <input type="submit" value="buscar" id="btnBuscar" class="btn btn-outline-success" >
       
       <!-- <a></a><input type="checkbox">Usuarios activos</a> -->
       
@@ -59,7 +63,7 @@
       
   
 
-      <div class="table-responsive">
+      <div id="result" class="table-responsive">
         <table class="table table-hover table-striped table-bordered">
             <tr>
                 <th>Id</th>
@@ -74,7 +78,7 @@
             </tr>
             <c:forEach items="${usuarios.content}" var="usuario">
             <tr>
-                <td >${usuario.id}</td>
+                <td>${usuario.id}</td>
                 <td>${usuario.nombre }</td>
                 <td>${usuario.apellido}</td>    
                 <td>${usuario.cuenta }</td>  
@@ -92,7 +96,8 @@
                 </c:choose>
                 <td>
                     <a href="${urlEdit}/${usuario.id}" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="badge badge-success">Editar</span></a>
-                    <a href="${urlDelete}/${usuario.id}"onclick='return confirm("¿esta seguro de eliminar el usuario?")' class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="badge badge-danger">Eliminar</span></a>
+                <a href="${urlDeleteAjax}/${usuario.id}"onclick='return confirm("¿esta seguro de eliminar el usuario?")' id="btnDelete" class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="badge badge-danger">Eliminar</span></a>
+                   <!-- <a href="${urlDelete}/${usuario.id}"onclick='return confirm("¿esta seguro de eliminar el usuario?")' id="btnDelete" class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="badge badge-danger">Eliminar</span></a>-->
                 </td>
             </tr>
             </c:forEach>
@@ -133,5 +138,6 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
     <script src="bootstrap/js/bootstrap.min.js"></script>     
+    <script src="../resources/js/funciones.js"></script> 
   </body>
 </html>
