@@ -78,7 +78,7 @@
             </tr>
             <c:forEach items="${usuarios.content}" var="usuario">
             <tr>
-                <td>${usuario.id}</td>
+                <td >${usuario.id}</td>
                 <td>${usuario.nombre }</td>
                 <td>${usuario.apellido}</td>    
                 <td>${usuario.cuenta }</td>  
@@ -95,8 +95,11 @@
                 
                 </c:choose>
                 <td>
-                    <a href="${urlEdit}/${usuario.id}" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="badge badge-success">Editar</span></a>
-                <a href="${urlDeleteAjax}/${usuario.id}"onclick='return confirm("¿esta seguro de eliminar el usuario?")' id="btnDelete" class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="badge badge-danger">Eliminar</span></a>
+                <a href="${urlEdit}/${usuario.id}" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="badge badge-success">Editar</span></a>
+                <a href="${urlDeleteAjax}/${usuario.id}"onclick='return confirm("¿esta seguro de eliminar el usuario?")' class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="badge badge-danger">Eliminar</span></a>
+                <button id="boton" class="btn btn-danger btn-sm" ><span id="" class="badge badge-danger">klk</span></button>
+                <input type="button" id="deleteBtn" value="hola" class="botonesEliminar">
+              
                    <!-- <a href="${urlDelete}/${usuario.id}"onclick='return confirm("¿esta seguro de eliminar el usuario?")' id="btnDelete" class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="badge badge-danger">Eliminar</span></a>-->
                 </td>
             </tr>

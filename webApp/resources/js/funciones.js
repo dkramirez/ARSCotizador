@@ -1,14 +1,66 @@
+/*
+$(".botonesEliminar").on("click", function() {
+	alert("Estoy listo!");
+	
+});*/
+
+
 
 //Haciendo pruebas con js.
 
-function seleccionar (){
-	alert("Oh yeah!");
-	//var select = document.getById("perfil2");
+/*
+//function seleccionar (){
+	
+	var select = document.getElementById("DeleteBtn").value;
 	//console.log(select);
-}
+	//select.style.background = "black";   
+	alert("Oh yeah!" + select);
+//}*/
 
-$("#btnDelete").click(function() {
+
+/*
+var borrar = document.getElementById("btnDelete");
+
+function cargarContenidoAjax(){
+    //Creando nuestro objeto XMLHttpRequest
+	alert("estoy en la la funcion ajax");
+    var xhr = new XMLHttpRequest();
+
+    //Abriendo la conexion 
+    xhr.open("GET", "./usuarios/ajaxdelete/138", true )
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4 && xhr.status == 200){
+            console.log("Se cargo correctamente");
+
+           // var contenido = document.getElementById('contenido');
+            //contenido.innerHTML = xhr.responseText;
+
+        }else{
+
+            console.log("Hubo un error");
+        }
+    }
+    xhr.send();
+}
+borrar.addEventListener('click', cargarContenidoAjax);
+*/
+
+// aqui 
+
+/*
+$(document).ready(function(){
+	var id = $("#DeleteBtn").val();
+	console.log(id);
+	//alert("soy una prueba de que jquery funciona " + id);
+	
+});*/
+
+//No se como traer el id del usuario que se va a eliminar
+$(".botonesEliminar").click(function() {
+	var testID = $();
 	var empId = $("#SelectedidEmpleado : selected").text();
+	//var empId = $("#idUsuario");
+	console.log(empId);
 	console.log("dentro de la primera funcion");
 	
 	$.ajax({
@@ -24,6 +76,8 @@ $("#btnDelete").click(function() {
 			}
 		});
 	});
+	
+/*
 
 $(document).ready(function() {
 	$("#btnBuscar").click(function() {
@@ -50,8 +104,8 @@ $(document).ready(function() {
 		
 	});
 	
-	/*alert('estoy ready');
+	alert('estoy ready');
 	console.log("estoy ready");
-	$(this).css({"color":"red"});
-	*/
-});
+	
+	
+});*/
