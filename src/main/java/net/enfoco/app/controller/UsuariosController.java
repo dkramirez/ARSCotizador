@@ -250,21 +250,28 @@ public class UsuariosController {
 	}*/
 	
 	
+	
+	// me esta imprimiendo el roleUsuario muchas veces repetidas
 	//TODO se esta utilizando este metodo para hacer prueba con ajax del buscador
-	//@ResponseBody
 	@GetMapping("/buscar")
-	public ModelAndView buscador( @RequestParam("txtBuscar") String txtBuscar, Model model, Pageable page, Authentication autentication) {
+	@ResponseBody
+	public Page<Usuario> buscador( @RequestParam("txtBuscar") String txtBuscar, Model model, Pageable page, Authentication autentication) {
 		
-		ModelAndView mv = new ModelAndView("listaUsuario");
+		//ModelAndView mv = new ModelAndView("listaUsuario");
+		
 		LoginController l = new LoginController();
 		l.listaRoles(autentication, model);
 		
 		Page<Usuario> listBuscador = serviciosUsuario.buscar(txtBuscar, page);
+		//List<Usuario> test = listBuscador.getContent();
+		
 		//model.addAttribute("usuarios", listBuscador);
-		mv.addObject("usuario", listBuscador);
+		//mv.addObject("usuario", listBuscador);
+		System.out.println("Lo que se va a buscar " + txtBuscar );
+		System.out.println("lo que contiene la lista " + listBuscador.getContent());
 		System.out.println("lo que trae la busqueda " + listBuscador.getNumber());
 		
-		return mv;
+		return listBuscador;
 	}
 	
 	
@@ -291,10 +298,12 @@ public class UsuariosController {
 		return msg;
 	}
 	
-	//para mostrar los usuarios que estan activos, aun haciendo pruebas.
-	public String usuariosActivos () {
+		//para mostrar los usuarios que estan activos, aun haciendo pruebas.
+		public String usuariosActivos () {
+			
+			return "listaUsuario";
+		}
 		
-		return "listaUsuario";
-	}
+		
 	
 	}

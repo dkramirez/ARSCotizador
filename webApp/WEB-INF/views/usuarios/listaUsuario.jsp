@@ -19,6 +19,7 @@
     <spring:url value="/usuarios" var="urlUsuarios"></spring:url>
     <spring:url value="/usuarios/buscar" var="urlBuscar"></spring:url>
     <spring:url value="/usuarios/ajaxdelete" var="urlDeleteAjax"></spring:url>
+    <spring:url value="/usuarios/buscar" var="urlBuscarAjax"></spring:url>
       
     <link href= "../resources/CSS/estilos.css" rel="stylesheet"/>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
@@ -46,24 +47,29 @@
        <div class="alert alert-success" role="alert">${ mensaje}</div>
       </c:if>
       
-      <div class="navbar">
+      <div class="navbar" id="formua">
       <a href="${urlCreate}" class="btn btn-primary" role="button" title="Nuevo Usuario" >Nuevo</a><br><br>
       
       <!--<form class="form-inline" action="${urlBuscar} " method="get">-->
-      <form class="form-inline" action="${urlBuscar}"  method="get"  id="idBuscar">
+      <!--<form class="form-inline" action="${urlBuscar}"  method="get"  id="idBuscar">-->
+       <!-- <form class="form-inline"id="idBuscar" method="get" action="${urlBuscarAjax}">-->
+       <form class="form-inline" id="formularioBusqueda">
       
-      <!-- <a><input type="checkbox" value="activos" name="activos" class="form-control">Usuario activos</a> -->
+      <!-- <a><input type="checkbox" value="activos" name="activos" class="form-control">Usuario activos</a> -->`
+    
       <input type="search" name="txtBuscar" class="form-control" id="txtBuscar">
-      <input type="submit" value="buscar" id="btnBuscar" class="btn btn-outline-success" >
+      <input type="submit" value="buscar" id="btnBuscar" class="btn btn-outline-success">
+      
       
       <!-- <a></a><input type="checkbox">Usuarios activos</a> -->
       
       </form>
+      <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
        </div>
       
-  
+  	<div id="result"></div>
 
-      <div id="result" class="table-responsive">
+      <div  class="table-responsive">
         <table class="table table-hover table-striped table-bordered">
             <tr>
                 <th>Id</th>
@@ -76,9 +82,15 @@
                 <th>Opciones</th>
                          
             </tr>
+             <tbody id="tabla">
+            
             <c:forEach items="${usuarios.content}" var="usuario">
-            <tr>
-                <td >${usuario.id}</td>
+            
+            
+           
+            
+            <tr id="contenido">
+                <th scope="row">${usuario.id}</th>
                 <td>${usuario.nombre }</td>
                 <td>${usuario.apellido}</td>    
                 <td>${usuario.cuenta }</td>  
@@ -94,16 +106,23 @@
                 		</c:otherwise>
                 
                 </c:choose>
+                
                 <td>
                 <a href="${urlEdit}/${usuario.id}" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="badge badge-success">Editar</span></a>
                 <a href="${urlDeleteAjax}/${usuario.id}"onclick='return confirm("¿esta seguro de eliminar el usuario?")' class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="badge badge-danger">Eliminar</span></a>
-                <button id="boton" class="btn btn-danger btn-sm" ><span id="" class="badge badge-danger">klk</span></button>
-                <input type="button" id="deleteBtn" value="hola" class="botonesEliminar">
+                <!--<button id="boton" class="btn btn-danger btn-sm" ><span id="" class="badge badge-danger">klk</span></button>-->
+                <input type="button" id="deleteBtn" value="test" class="botonesEliminar">
               
                    <!-- <a href="${urlDelete}/${usuario.id}"onclick='return confirm("¿esta seguro de eliminar el usuario?")' id="btnDelete" class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="badge badge-danger">Eliminar</span></a>-->
                 </td>
             </tr>
+              
+           
+           
+          
             </c:forEach>
+             </tbody>
+           
                  
         </table>
       </div>
@@ -141,6 +160,8 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
     <script src="bootstrap/js/bootstrap.min.js"></script>     
-    <script src="../resources/js/funciones.js"></script> 
+    <script src="../resources/js/funciones.js"></script>
+ 
+    
   </body>
 </html>

@@ -29,6 +29,8 @@
 		</mvc:argument-resolvers>
 	</mvc:annotation-driven>
 	
+	<!-- Se agrego esta dependencia para json -->
 
+	<!-- Hasta aqui -->
 
 </beans>

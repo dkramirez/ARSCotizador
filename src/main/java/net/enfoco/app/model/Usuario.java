@@ -18,6 +18,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
@@ -41,6 +43,7 @@ public class Usuario {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarios", fetch = FetchType.EAGER)
 	//@OneToMany(mappedBy = "usuarios") este era el que esta funcionando 
 	
+	@JsonIgnore
 	private List<RoleUsuario> listRollUsuario =  new ArrayList<RoleUsuario>();
 	
 	public List<RoleUsuario> getListRollUsuario() {

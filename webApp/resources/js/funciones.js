@@ -1,111 +1,92 @@
-/*
-$(".botonesEliminar").on("click", function() {
-	alert("Estoy listo!");
+var formulario = document.querySelector("#formularioBusqueda");
+var formularioPrincipal = document.querySelector("#tabla");
+
+formulario.addEventListener('submit', function(e) {
+	e.preventDefault();
+	//console.log("estoy dentro de la funcion")
+
+	var data = new FormData(formulario);
+	console.log(data);
 	
-});*/
+	//Obteniendo el valor introducido para hacer la busqueda
+	var txtBuscar = data.get("txtBuscar");
 
+	//Obteniendo los datos con fetch
+	fetch("/ARSCotizador/usuarios/buscar?txtBuscar="+txtBuscar)
+			.then(res=>res.json())
+			.then(dato=>{
+				//console.log(dato)
+				tabla(dato)
 
+				//solo me falta setear los datos a la tabla 
+			})
 
-//Haciendo pruebas con js.
+			function tabla(dato) {
 
-/*
-//function seleccionar (){
-	
-	var select = document.getElementById("DeleteBtn").value;
-	//console.log(select);
-	//select.style.background = "black";   
-	alert("Oh yeah!" + select);
-//}*/
-
-
-/*
-var borrar = document.getElementById("btnDelete");
-
-function cargarContenidoAjax(){
-    //Creando nuestro objeto XMLHttpRequest
-	alert("estoy en la la funcion ajax");
-    var xhr = new XMLHttpRequest();
-
-    //Abriendo la conexion 
-    xhr.open("GET", "./usuarios/ajaxdelete/138", true )
-    xhr.onreadystatechange = function(){
-        if(xhr.readyState == 4 && xhr.status == 200){
-            console.log("Se cargo correctamente");
-
-           // var contenido = document.getElementById('contenido');
-            //contenido.innerHTML = xhr.responseText;
-
-        }else{
-
-            console.log("Hubo un error");
-        }
-    }
-    xhr.send();
-}
-borrar.addEventListener('click', cargarContenidoAjax);
-*/
-
-// aqui 
-
-/*
-$(document).ready(function(){
-	var id = $("#DeleteBtn").val();
-	console.log(id);
-	//alert("soy una prueba de que jquery funciona " + id);
-	
-});*/
-
-//No se como traer el id del usuario que se va a eliminar
-$(".botonesEliminar").click(function() {
-	var testID = $();
-	var empId = $("#SelectedidEmpleado : selected").text();
-	//var empId = $("#idUsuario");
-	console.log(empId);
-	console.log("dentro de la primera funcion");
-	
-	$.ajax({
-		url:"/usuarios/ajaxdelete",
-		data:{empId:empId},
-		type:"POST",
-		success: function(data) {
-			$("#msgDiv").text(data);
-			$("#msgDiv").show();
-			clearEmployeeData();
-			$("#SelectedIdEmpleado option:contains("+empId+")").remove();
-			
-			}
-		});
-	});
-	
-/*
-
-$(document).ready(function() {
-	$("#btnBuscar").click(function() {
-		var buscarTexto = $('#idBuscar').val();
-		var saludo = 'hola';
-		var txtBuscar = $('#txtBuscar').val();
-		console.log(txtBuscar);
-		//alert("presionaste el boton buscar " + txtBuscar);
-		
-		$.ajax({
-			type:'GET',
-			url:'buscar',
-			data:{txtBuscar},
-			success: function(resultado) {
+				//console.log(dato)
+				//console.log(dato.content[0].nombre)
 				
-				$("#resultado").html(resultado);
+				formularioPrincipal.innerHTML=''
+
+				var borrar = '/ARSCotizador/usuarios/delete'
+				var editar = '/ARSCotizador/usuarios/edit'  
+
+				for(let valor in dato){
+				console.log(dato.content[0].nombre)
+
+				
+				if(dato.content[0].estatus ==1){
+					var estatus = 'Activo'
+					var	clase=  'badge badge-success'
+					
+				}else{
+					estatus = 'Inactivo'
+					clase = 'badge badge-danger' 
+					
+				}
+				
+					formularioPrincipal.innerHTML=`
+					
+					<tbody>
+					<tr>
+				<th scope="row">${dato.content[0].id}</th>
+                <td>${dato.content[0].nombre}</td>
+                <td>${dato.content[0].apellido}</td>    
+                <td>${dato.content[0].cuenta}</td>  
+                <td>${dato.content[0].email}</td>
+                <td>${dato.content[0].telefono}</td> 
+                <td><span class="${clase}">${estatus}</span></td>	
+				<td>
+                <a href="${editar}/${dato.content[0].id}" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="badge badge-success">Editar</span></a>
+                <a href="${borrar}/${dato.content[0].id}"onclick='return confirm("¿esta seguro de eliminar el usuario?")' class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="badge badge-danger">Eliminar</span></a>
+                </td>
+				
+				</tr>
+				</tbody>
+					`	
+				
+				}
 				
 			}
-		}).done (function() {
 			
-		}).fail (function() {
-			console.log('Error al hacer la peticion ajax');
-		});
+
 		
-	});
-	
-	alert('estoy ready');
-	console.log("estoy ready");
-	
-	
-});*/
+
+		
+			document.onreadystatechange = () => {
+				if (document.readyState === 'complete') {
+				  console.log('DOM is ready.')
+				}
+			  };
+			
+
+			fetch("/ARSCotizador/usuarios/indexPaginate?page=0")
+						.then(res=>res.json())
+						.then(data=>{
+
+							console.log(data)
+						})
+			function usuarios() {
+				
+			}
+})
